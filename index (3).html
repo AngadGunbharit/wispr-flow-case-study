@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wispr Flow Case Study</title>
+<meta name="description" content="An ICP scan of 124 public reviews of Wispr Flow and a Prompt Mode prototype, by Angad Gunbharit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:opsz,wght@8..60,400&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#F5F7F6;--surface:#FFFFFF;--ink:#16201F;--ink2:#46524F;--muted:#6E7A77;--rule:#DCE3E1;--accent:#00897B;color-scheme:light}
+@media (prefers-color-scheme: dark){:root{--bg:#121817;--surface:#1A2120;--ink:#E6ECEA;--ink2:#B4C0BD;--muted:#8A9794;--rule:#2C3634;--accent:#0FA898;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.6;padding-inline:20px}
+.wrap{max-width:760px;margin:0 auto;padding-block:64px 80px;display:flex;flex-direction:column;gap:40px}
+h1,h2{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;margin:0;line-height:1.12;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(2.3rem,6vw,3.4rem)}
+h2{font-size:1.35rem}
+p{margin:0;max-width:65ch;color:var(--ink2)}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+header{display:flex;flex-direction:column;gap:16px}
+.wave{display:flex;align-items:center;gap:3px;height:36px}
+.wave i{display:block;width:4px;border-radius:2px;background:var(--accent)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:640px){.cards{grid-template-columns:1fr}}
+a.card{display:flex;flex-direction:column;gap:10px;padding:22px;background:var(--surface);border:1px solid var(--rule);border-radius:12px;color:inherit;text-decoration:none}
+a.card:hover,a.card:focus-visible{border-color:var(--accent);outline:none}
+a.card .go{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--accent);margin-top:auto}
+footer{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
+footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="wave" aria-hidden="true"><i style="height:8px"></i><i style="height:16px"></i><i style="height:26px"></i><i style="height:34px"></i><i style="height:20px"></i><i style="height:30px"></i><i style="height:14px"></i><i style="height:24px"></i><i style="height:10px"></i></div>
+  <div class="eyebrow">Case study · Wispr Flow · September 2026</div>
+  <h1>Who Flow is for, and what to build for them</h1>
+  <p>I analyzed 124 public reviews and comments about Wispr Flow to find its best-fit next segment, then built a prototype of the first feature I'd test for that segment.</p>
+</header>
+<div class="cards">
+  <a class="card" href="icp-scan.html"><div class="eyebrow">01 · Research</div><h2>Who Flow Is For</h2><p>An ICP scan across the App Store, G2 and Hacker News. The happiest users are AI-native knowledge workers, a segment Wispr doesn't market to.</p><span class="go">Read the scan →</span></a>
+  <a class="card" href="prompt-mode.html"><div class="eyebrow">02 · Prototype</div><h2>Flow Prompt Mode</h2><p>When you dictate into an AI app, Flow cleans your speech into a structured prompt instead of a short message, so no constraint gets lost.</p><span class="go">Try the prototype →</span></a>
+</div>
+<footer><span>Angad Gunbharit</span><a href="flow_signals.csv">Coded dataset (CSV)</a></footer>
+</div>
+</body>
+</html>

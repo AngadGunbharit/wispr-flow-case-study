@@ -1,0 +1,125 @@
+id,source,rating,sentiment,persona,job,themes,note
+1,AppStore-US,5,pos,general,messaging,accuracy;learning,Better than Apple dictation; learns custom terms
+2,AppStore-US,5,pos,general,messaging,accuracy;cleanup,Self-correction and pause detection
+3,AppStore-US,5,pos,general,docs,accuracy;price,iPad; hit 1000-word free cap; willing to pay
+4,AppStore-US,5,pos,accessibility,notes,accuracy,Short-term memory challenges; note-taking
+5,AppStore-US,5,pos,general,messaging,accuracy;cleanup,Transforming drafting and notes; filler removal
+6,AppStore-US,5,pos,general,messaging,tone,Speaking easier than writing; likes tone modes
+7,AppStore-US,5,pos,general,messaging,tone;speed,Formal/casual settings; saves time
+8,AppStore-US,5,pos,general,notes,accuracy,Minimal editing needed
+9,AppStore-US,5,pos,general,docs,accuracy;mobile_friction,Laptop user; less convenient on iPad
+10,AppStore-US,5,pos,general,messaging,mobile_friction,Frustrated with app-switching on iOS
+11,AppStore-GB,5,pos,general,messaging,accuracy;mobile_friction,Must switch between apps on iOS
+12,AppStore-GB,5,pos,general,messaging,onboarding,Impressive onboarding
+13,AppStore-GB,5,pos,knowledge_worker,messaging,speed,Professional communication
+14,AppStore-GB,5,pos,accessibility,docs,accuracy,Dyslexia; broken microphone still works
+15,AppStore-GB,5,pos,general,messaging,accuracy;cleanup,Edits to remove mistakes
+16,AppStore-GB,5,pos,founder_exec,messaging,speed,Business owner; saves 3-4 hours a day
+17,AppStore-GB,5,pos,general,messaging,cleanup,Fixes dictation errors
+18,AppStore-GB,5,pos,knowledge_worker,ai_prompting,cleanup,AI work; clean text
+19,AppStore-GB,5,pos,general,messaging,accuracy,Feature request for audio output
+20,AppStore-GB,5,pos,general,messaging,accuracy;speed,Spot-on accuracy
+21,AppStore-CA,5,pos,knowledge_worker,messaging,speed,Emails texts briefing notes; 5x faster
+22,AppStore-CA,1,neg,general,messaging,price,Subscription too expensive; wants one-time
+23,AppStore-CA,5,pos,general,messaging,delight,Unexpectedly enjoyable
+24,AppStore-CA,5,pos,general,messaging,cleanup,Natural speech to polished writing
+25,AppStore-CA,1,neg,general,messaging,privacy,Full keyboard access concern
+26,AppStore-CA,1,neg,general,messaging,billing,Unexpected downgrade; unresponsive support
+27,AppStore-CA,2,neg,general,messaging,accuracy;mobile_friction,Great recognition; weak keyboard and autocorrect
+28,AppStore-CA,1,neg,general,messaging,trust,Questions review authenticity
+29,AppStore-CA,1,neg,general,messaging,price,14-day trial too short; can't afford
+30,AppStore-CA,1,neg,general,messaging,privacy,Full keyboard access unacceptable
+31,AppStore-IN,5,pos,multilingual,messaging,accuracy,Works with Indian accents
+32,AppStore-IN,5,pos,general,notes,accuracy,Picks up whispered voice
+33,AppStore-IN,5,pos,general,messaging,accuracy,Trusts transcription without checking
+34,AppStore-IN,5,pos,general,messaging,accuracy,Best of several tested
+35,AppStore-IN,5,pos,general,messaging,accuracy,Fast speaker; like a stenographer
+36,AppStore-IN,5,pos,multilingual,messaging,multilingual;learning,Wants bulk dictionary import and English (India)
+37,AppStore-IN,5,pos,mobile_field,notes,multilingual,Driving; thinking aloud; wants code-switching
+38,AppStore-IN,4,mixed,general,messaging,privacy,Useful but keyboard access concern
+39,AppStore-IN,5,pos,general,messaging,speed,2-3x productivity; zero typing
+40,AppStore-IN,5,pos,general,notes,delight,Mind expresses freely
+41,AppStore-AU,5,pos,knowledge_worker,notes,speed,Dispute resolution / dev / music; offloading thoughts
+42,AppStore-AU,4,mixed,general,messaging,reliability,Fails silently with AirPods
+43,AppStore-AU,5,pos,general,messaging,accuracy;reliability,iPad Pro input bug
+44,AppStore-AU,5,pos,general,messaging,cleanup,Context and formatting aware
+45,AppStore-AU,5,pos,general,messaging,accuracy,Better than Siri
+46,AppStore-AU,5,pos,general,messaging,accuracy,No word limits vs built-in
+47,AppStore-AU,5,pos,general,ai_prompting,speed,ChatGPT/Gemini prompting
+48,AppStore-AU,5,pos,mobile_field,notes,accuracy,Construction on-site notes
+49,AppStore-AU,5,pos,general,messaging,speed,5-6x more productive
+50,AppStore-AU,5,pos,general,messaging,speed,Speed and ease
+51,G2,5,pos,founder_exec,ai_prompting,learning;ui,CPO; custom dictionary; panel blocks controls
+52,G2,4.5,pos,student,docs,speed;reliability,54 to 106 WPM
+53,G2,4.5,pos,general,messaging,speed,200 WPM
+54,G2,4.5,pos,knowledge_worker,ai_prompting,multilingual;ui,E-learning; multi-language struggles
+55,G2,3.5,mixed,knowledge_worker,ai_prompting,multilingual,Consultant; Hinglish not working
+56,G2,5,pos,knowledge_worker,ai_prompting,accuracy,Marketing manager healthcare; ChatGPT prompts
+57,G2,3,mixed,founder_exec,messaging,multilingual;reliability,Android breaks frequently
+58,G2,5,pos,founder_exec,messaging,speed,COO; emails
+59,G2,5,pos,knowledge_worker,messaging,learning,Associate; learns terminology
+60,G2,5,pos,general,messaging,speed,Saves hours daily
+61,G2,4.5,pos,knowledge_worker,messaging,price,Software; expensive; shortcut conflicts
+62,G2,5,pos,founder_exec,messaging,speed,Business coach
+63,G2,5,pos,knowledge_worker,ai_prompting,learning,Director UX; context-aware
+64,G2,5,pos,knowledge_worker,messaging,mobile_friction,iPhone app switching
+65,G2,5,pos,knowledge_worker,ai_prompting,mobile_friction,Product manager; keyboard switching
+66,G2,5,pos,knowledge_worker,messaging,cleanup,Sales manager; client communication
+67,G2,5,pos,founder_exec,docs,habit,Director; forgets to use it regularly
+68,G2,4,pos,founder_exec,ai_prompting,speed,Founder; AI prompts
+69,G2,5,pos,knowledge_worker,messaging,mobile_friction,Marketing strategist; iPhone keyboard cumbersome
+70,G2,4.5,pos,knowledge_worker,ai_prompting,price,BD manager; subscription required
+71,G2,4.5,pos,knowledge_worker,messaging,accuracy,Team communication; sometimes misinterprets
+72,HN,,pos,general,messaging,accuracy,Interested in trying
+73,HN,,pos,general,messaging,price,Generous free tier
+74,HN,,mixed,general,messaging,hardware,Wants whisper-mode mic
+75,HN,,pos,general,messaging,accuracy,Robust vs iOS/macOS
+76,HN,,neg,developer,coding,alternative,Built alternative after switching off
+77,HN,,neg,general,messaging,alternative,Seeking alternative
+78,HN,,pos,general,messaging,accuracy,Paid user
+79,HN,,neg,general,messaging,context,Lacks context awareness
+80,HN,,neg,general,messaging,alternative,Switched to silent speech
+81,HN,,neg,general,messaging,defensibility,Questions defensibility
+82,HN,,neg,developer,coding,privacy;price;alternative,Built local alternative
+83,HN,,neutral,developer,coding,alternative,Learning local models
+84,HN,,neg,developer,coding,accuracy;alternative,Competitor; claims regression
+85,HN,,neg,developer,coding,trust;alternative,User-hostile features; built replacement
+86,HN,,mixed,developer,coding,accuracy,Tried improvements
+87,HN,,pos,general,messaging,cleanup,Um removal
+88,HN,,neg,developer,coding,price;alternative,Built Floatspeak; stopped paying
+89,HN,,neg,developer,coding,platform;alternative,No Linux; repackaged
+90,HN,,pos,general,messaging,accuracy,Uses daily
+91,HN,,pos,developer,coding,accuracy,Dictation in public reference
+92,HN,,neutral,general,messaging,platform,Distribution discussion
+93,HN,,neutral,general,messaging,accuracy,Technical question
+94,HN,,neg,general,messaging,privacy,Cloud model concern
+95,HN,,neg,general,messaging,price,$12/mo not worth it over iOS
+96,HN,,mixed,general,messaging,accuracy,More accurate but more friction than Apple
+97,HN,,neg,general,messaging,accuracy,Dismissive
+98,HN,,mixed,general,messaging,performance,Heavier than Apple
+99,HN,,neg,general,messaging,performance;alternative,Switched to local Handy for latency
+100,HN,,neg,general,messaging,accuracy,Outperformed by ElevenLabs/OpenAI
+101,HN,,pos,general,messaging,cleanup,Filler removal
+102,HN,,neutral,developer,coding,alternative,Built dictation app
+103,HN,,pos,knowledge_worker,messaging,accuracy,Common in open offices
+104,HN,,neg,general,messaging,design,Landing page originality
+105,HN,,neutral,developer,coding,alternative,Flow + Granola alternative
+106,HN,,neutral,general,messaging,accuracy,Silence artifacts
+107,HN,,neg,developer,coding,price;alternative,PAYG alternative to subscription
+108,HN,,pos,general,messaging,learning,Replacement rules
+109,HN,,pos,general,docs,cleanup,List formatting
+110,HN,,pos,accessibility,docs,accessibility,PM unable to type during injury
+111,HN,,neg,general,messaging,alternative,Fragmented OSS efforts
+112,HN,,pos,developer,coding,alternative,Local tool comparable
+113,HN,,pos,general,messaging,alternative,Satisfied with Handy
+114,HN,,neutral,general,messaging,alternative,Competitive positioning
+115,HN,,neg,general,messaging,trust,SOC2 vendor concern
+116,HN,,pos,general,docs,accuracy,Far superior to macOS
+117,HN,,pos,developer,coding,speed,Advocates STT for dev
+118,HN,,pos,developer,ai_prompting,cleanup,LLM post-processing
+119,HN,,neg,developer,coding,price;alternative,Built free local alternative
+120,HN,,pos,developer,coding,speed,Faster than typing
+121,HN,,pos,developer,coding,accuracy,Daily user; others inadequate
+122,HN,,pos,developer,ai_prompting,speed,Primary interface for Claude
+123,HN,,pos,developer,coding,accuracy,OSS attempts inferior to Flow
+124,HN,,neg,developer,coding,privacy;price;alternative,Built on-device alternative

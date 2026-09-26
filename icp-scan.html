@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif;background:#fafaf9}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Who Flow Is For</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F5F7F6; --surface:#FFFFFF; --ink:#16201F; --ink2:#46524F; --muted:#6E7A77;
+  --rule:#DCE3E1; --accent:#00897B; --neg:#C2410C; --mid:#AAB4B1; --chip:#E6F1EF;
+  --display:"Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121817; --surface:#1A2120; --ink:#E6ECEA; --ink2:#B4C0BD; --muted:#8A9794;
+    --rule:#2C3634; --accent:#0FA898; --neg:#DB5F1C; --mid:#56625F; --chip:#1D2E2B; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121817; --surface:#1A2120; --ink:#E6ECEA; --ink2:#B4C0BD; --muted:#8A9794;
+  --rule:#2C3634; --accent:#0FA898; --neg:#DB5F1C; --mid:#56625F; --chip:#1D2E2B; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-inline:20px;padding-block:0}
+.wrap{max-width:760px;margin:0 auto;padding-block:56px 80px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.12;text-wrap:balance;margin:0;letter-spacing:-0.01em}
+h1{font-size:clamp(2.3rem,6vw,3.6rem)}
+h2{font-size:1.65rem}
+h3{font-size:1.1rem}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:18px}
+header{display:flex;flex-direction:column;gap:20px}
+.lede{font-size:1.2rem;color:var(--ink2)}
+.byline{font-family:var(--mono);font-size:.8rem;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
+.wave{display:flex;align-items:center;gap:3px;height:36px}
+.wave i{display:block;width:4px;border-radius:2px;background:var(--accent);opacity:.85}
+.figs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.fig{background:var(--surface);padding:20px;display:flex;flex-direction:column;gap:8px}
+.fig b{font-family:var(--display);font-size:2.2rem;line-height:1;font-variant-numeric:tabular-nums}
+.fig span{font-size:.92rem;color:var(--ink2);line-height:1.45}
+.fig b.pos{color:var(--accent)} .fig b.neg{color:var(--neg)}
+@media (max-width:640px){.figs{grid-template-columns:1fr}}
+.chart{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:14px;position:relative}
+.chart .title{font-family:var(--display);font-weight:500;font-size:1rem}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.74rem;color:var(--ink2)}
+.legend span{display:flex;align-items:center;gap:6px}
+.sw{width:10px;height:10px;border-radius:2px;display:inline-block}
+.row{display:grid;grid-template-columns:minmax(0,190px) 1fr;gap:12px;align-items:center}
+.row .lab{font-size:.9rem;line-height:1.3}
+.row .lab small{display:block;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.bar{display:flex;gap:2px;height:22px}
+.bar div{height:100%;min-width:0;cursor:default;display:flex;align-items:center;padding-left:6px;font-family:var(--mono);font-size:.72rem;color:#fff;overflow:hidden;white-space:nowrap}
+.bar div:first-child{border-radius:4px 0 0 4px}.bar div:last-child{border-radius:0 4px 4px 0}
+.bar div:only-child{border-radius:4px}
+.hbar{display:flex;align-items:center;gap:8px}
+.hbar div{height:18px;border-radius:0 4px 4px 0;background:var(--neg)}
+.hbar div.q{background:var(--mid)}
+.hbar span{font-family:var(--mono);font-size:.78rem;color:var(--ink2);font-variant-numeric:tabular-nums}
+@media (max-width:520px){.row{grid-template-columns:1fr;gap:4px}}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:.74rem;padding:6px 8px;border-radius:6px;white-space:nowrap}
+.note{font-size:.84rem;color:var(--muted);font-style:italic}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-family:var(--mono);font-size:.72rem;padding:2px 8px;border-radius:999px;background:var(--chip);color:var(--ink2)}
+.pill.yes{color:var(--accent)} .pill.no{color:var(--neg);background:transparent;border:1px solid var(--rule)}
+.rec{border-left:3px solid var(--accent);padding:4px 0 4px 20px;display:flex;flex-direction:column;gap:12px}
+.rec p.big{font-family:var(--display);font-size:1.45rem;line-height:1.25;font-weight:500}
+ul.reasons{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;max-width:65ch}
+.exps{display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.exp{background:var(--surface);padding:18px 20px;display:grid;grid-template-columns:34px 1fr;gap:6px 14px}
+.exp .n{font-family:var(--mono);color:var(--accent);font-size:.9rem;padding-top:2px}
+.exp dl{grid-column:2;margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.92rem}
+.exp dt{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:3px}
+.exp dd{margin:0;color:var(--ink2)}
+details{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 18px}
+summary{cursor:pointer;font-family:var(--display);font-weight:500}
+summary:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+details table{margin-top:12px;font-size:.82rem}
+details td{padding:6px 8px}
+a{color:var(--accent)}
+.src{font-size:.88rem;color:var(--ink2);display:flex;flex-direction:column;gap:6px}
+footer{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="wave" aria-hidden="true" id="wave"></div>
+  <div class="eyebrow">ICP scan · Wispr Flow · September 2026</div>
+  <h1>Who Flow Is For</h1>
+  <p class="lede">I coded 124 public reviews and comments about Flow by who wrote them, what they use it for, and why they love or leave it. The happiest segment is one Wispr doesn't market to, and the loudest segment Wispr does market to is building its own replacements.</p>
+  <div class="byline"><span>Angad Gunbharit</span><span>Prepared for the Product Lead role</span></div>
+</header>
+
+<div class="figs">
+  <div class="fig"><b class="pos">22 / 24</b><span>knowledge workers and execs were positive. None were negative. Average rating 4.72.</span></div>
+  <div class="fig"><b class="neg">13 / 21</b><span>developer comments were about building or switching to a Flow alternative.</span></div>
+  <div class="fig"><b>4 / 28</b><span>negative signals were about accuracy. Most were about price, privacy, or switching.</span></div>
+</div>
+
+<section>
+  <div class="eyebrow">Finding 1</div>
+  <h2>Two audiences, two different products</h2>
+  <p>Review sites and Hacker News describe different Flow experiences. On the App Store and G2, reviewers are overwhelmingly positive. On Hacker News, where developers talk, the split is even.</p>
+  <div class="chart" id="c1">
+    <div class="title">Sentiment by segment</div>
+    <div class="legend"><span><i class="sw" style="background:var(--accent)"></i>Positive</span><span><i class="sw" style="background:var(--mid)"></i>Mixed or neutral</span><span><i class="sw" style="background:var(--neg)"></i>Negative</span></div>
+    <div id="c1rows" style="display:flex;flex-direction:column;gap:14px"></div>
+  </div>
+  <p class="note">Share of positive signals by source: App Store 82% (n=50), G2 90% (n=21), Hacker News 40% (n=53).</p>
+</section>
+
+<section>
+  <div class="eyebrow">Finding 2</div>
+  <h2>Developers are the segment most likely to clone Flow</h2>
+  <p>Developers are one of the seven audiences on Wispr's site. They are also the only segment with more negative signals than positive ones. Their complaints are rarely about quality. Several call Flow the best they have used. The friction is paying $12–15 a month for cloud dictation when an open-source Whisper model runs on a laptop.</p>
+  <p>That shows up as supply. In 2026 alone, Show HN launches include EnviousWispr, Rekody, Ghost Pepper and Spoke, all pitched as local or cheaper Flow alternatives. Commenters also name Handy, Floatspeak and several pay-as-you-go tools. Developers can build a good-enough version in a weekend, so they are the hardest segment to retain on price.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Finding 3</div>
+  <h2>People don't leave over quality</h2>
+  <p>Accuracy is Flow's most praised trait, with 32 positive mentions. It appears in only 4 of the 28 negative signals. The negatives cluster around the business model and trust.</p>
+  <div class="chart" id="c2">
+    <div class="title">What the 28 negative signals are about</div>
+    <div id="c2rows" style="display:flex;flex-direction:column;gap:10px"></div>
+    <p class="note">One signal can raise more than one theme, so counts add up to more than 28. 19 of the 28 (68%) cite price, privacy, or switching to an alternative.</p>
+  </div>
+  <p>Trust matters here too. Trustpilot has removed Wispr's profile, and Hacker News commenters still bring up the 2026 SOC 2 auditor issue. A segment that already doubts cloud dictation hears both.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Finding 4</div>
+  <h2>The best-fit segment isn't on the website</h2>
+  <p>Wispr's site markets to leaders, developers, creators, customer support, students, lawyers and sales. The list is organized by profession. None of it covers the job the happiest users describe most: talking to AI. People who dictate prompts to ChatGPT, Claude or Gemini are 12 of the signals. Eleven are positive and none are negative. Most are knowledge workers: marketing, UX, consulting, product and business development.</p>
+  <div class="chart">
+    <div class="title">Marketed segments vs. what the data shows</div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Segment</th><th>Signals</th><th>Positive</th><th>Negative</th><th>Has a Wispr page</th></tr></thead>
+      <tbody id="t1"></tbody>
+    </table></div>
+  </div>
+  <p>Two smaller signals are worth watching. Among people who love Flow, the top complaint is iOS keyboard friction: 6 of 7 mentions come from positive reviewers who have to switch apps to dictate. In India, reviewers praise accent handling but ask for Hinglish code-switching and an English (India) setting.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Recommendation</div>
+  <div class="rec">
+    <p class="big">Make AI-native knowledge workers the next ICP: people who spend their day writing to AI tools and to colleagues.</p>
+    <ul class="reasons">
+      <li><b>They are already the happiest users.</b> 22 of 24 knowledge workers and execs were positive, with no negatives.</li>
+      <li><b>They pay for time, not software.</b> Their reviews focus on hours saved and words per minute. Two mention price, and both still rate Flow 4.5.</li>
+      <li><b>They won't build their own.</b> Unlike developers, they aren't going to run Whisper locally.</li>
+      <li><b>Voice beats typing most for prompts.</b> Better prompts are longer prompts, and speaking makes a 200-word prompt cost 60 seconds.</li>
+      <li><b>It leads to voice-to-action.</b> A prompt is already an instruction to act. This segment is the natural first audience for Flow doing things, not just typing them.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">What I'd test first</div>
+  <h2>Four experiments, each small enough to ship in a week</h2>
+  <div class="exps" id="exps"></div>
+</section>
+
+<section>
+  <div class="eyebrow">Method and limits</div>
+  <p>I collected 124 public signals: 50 App Store reviews (the 10 most helpful in each of the US, UK, Canada, India and Australia), all 21 G2 reviews, and 53 Hacker News comments that mention Flow. I hand-coded each for persona, job, sentiment and themes. Reddit was not reachable for this scan, and Trustpilot has removed Wispr's profile.</p>
+  <p>This is directional, not conclusive. The App Store shows its most helpful reviews first, which skews positive. Hacker News skews toward developers and skeptics. Segment sizes are small, and I coded everything myself. The next step is to test the finding against Wispr's own usage data: retention and conversion for users whose most-dictated app is an AI chat tool.</p>
+  <details>
+    <summary>All 124 coded signals</summary>
+    <div class="tablewrap"><table><thead><tr><th>#</th><th>Source</th><th>Rating</th><th>Sentiment</th><th>Persona</th><th>Job</th><th>Themes</th><th>Note</th></tr></thead><tbody id="all"></tbody></table></div>
+  </details>
+</section>
+
+<section class="src">
+  <div class="eyebrow">Sources</div>
+  <a href="https://apps.apple.com/us/app/wispr-flow-ai-voice-keyboard/id6497229487?see-all=reviews&platform=iphone">App Store reviews (US, plus UK, CA, IN, AU storefronts)</a>
+  <a href="https://www.g2.com/products/wispr-flow/reviews">G2 reviews</a>
+  <a href="https://hn.algolia.com/?q=wispr%20flow">Hacker News comments and Show HN posts</a>
+  <a href="https://wisprflow.ai/">Wispr Flow website audience pages</a>
+  <a href="https://www.ziprecruiter.com/c/Wispr-Flow/Job/Product-Lead/-in-San-Francisco,CA?jid=b6592e059fa48cf2">Product Lead job posting</a>
+</section>
+
+<footer>Data collected September 26, 2026 · Angad Gunbharit · <a href="prompt-mode.html">Try the Prompt Mode prototype</a> · <a href="flow_signals.csv">Download the coded data</a></footer>
+</div>
+
+<script>
+const DATA = [{"id": 1, "source": "AppStore-US", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy", "learning"], "note": "Better than Apple dictation; learns custom terms"}, {"id": 2, "source": "AppStore-US", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy", "cleanup"], "note": "Self-correction and pause detection"}, {"id": 3, "source": "AppStore-US", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "docs", "themes": ["accuracy", "price"], "note": "iPad; hit 1000-word free cap; willing to pay"}, {"id": 4, "source": "AppStore-US", "rating": 5.0, "sentiment": "pos", "persona": "accessibility", "job": "notes", "themes": ["accuracy"], "note": "Short-term memory challenges; note-taking"}, {"id": 5, "source": "AppStore-US", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy", "cleanup"], "note": "Transforming drafting and notes; filler removal"}, {"id": 6, "source": "AppStore-US", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["tone"], "note": "Speaking easier than writing; likes tone modes"}, {"id": 7, "source": "AppStore-US", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["tone", "speed"], "note": "Formal/casual settings; saves time"}, {"id": 8, "source": "AppStore-US", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "notes", "themes": ["accuracy"], "note": "Minimal editing needed"}, {"id": 9, "source": "AppStore-US", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "docs", "themes": ["accuracy", "mobile_friction"], "note": "Laptop user; less convenient on iPad"}, {"id": 10, "source": "AppStore-US", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["mobile_friction"], "note": "Frustrated with app-switching on iOS"}, {"id": 11, "source": "AppStore-GB", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy", "mobile_friction"], "note": "Must switch between apps on iOS"}, {"id": 12, "source": "AppStore-GB", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["onboarding"], "note": "Impressive onboarding"}, {"id": 13, "source": "AppStore-GB", "rating": 5.0, "sentiment": "pos", "persona": "knowledge_worker", "job": "messaging", "themes": ["speed"], "note": "Professional communication"}, {"id": 14, "source": "AppStore-GB", "rating": 5.0, "sentiment": "pos", "persona": "accessibility", "job": "docs", "themes": ["accuracy"], "note": "Dyslexia; broken microphone still works"}, {"id": 15, "source": "AppStore-GB", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy", "cleanup"], "note": "Edits to remove mistakes"}, {"id": 16, "source": "AppStore-GB", "rating": 5.0, "sentiment": "pos", "persona": "founder_exec", "job": "messaging", "themes": ["speed"], "note": "Business owner; saves 3-4 hours a day"}, {"id": 17, "source": "AppStore-GB", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["cleanup"], "note": "Fixes dictation errors"}, {"id": 18, "source": "AppStore-GB", "rating": 5.0, "sentiment": "pos", "persona": "knowledge_worker", "job": "ai_prompting", "themes": ["cleanup"], "note": "AI work; clean text"}, {"id": 19, "source": "AppStore-GB", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Feature request for audio output"}, {"id": 20, "source": "AppStore-GB", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy", "speed"], "note": "Spot-on accuracy"}, {"id": 21, "source": "AppStore-CA", "rating": 5.0, "sentiment": "pos", "persona": "knowledge_worker", "job": "messaging", "themes": ["speed"], "note": "Emails texts briefing notes; 5x faster"}, {"id": 22, "source": "AppStore-CA", "rating": 1.0, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["price"], "note": "Subscription too expensive; wants one-time"}, {"id": 23, "source": "AppStore-CA", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["delight"], "note": "Unexpectedly enjoyable"}, {"id": 24, "source": "AppStore-CA", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["cleanup"], "note": "Natural speech to polished writing"}, {"id": 25, "source": "AppStore-CA", "rating": 1.0, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["privacy"], "note": "Full keyboard access concern"}, {"id": 26, "source": "AppStore-CA", "rating": 1.0, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["billing"], "note": "Unexpected downgrade; unresponsive support"}, {"id": 27, "source": "AppStore-CA", "rating": 2.0, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["accuracy", "mobile_friction"], "note": "Great recognition; weak keyboard and autocorrect"}, {"id": 28, "source": "AppStore-CA", "rating": 1.0, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["trust"], "note": "Questions review authenticity"}, {"id": 29, "source": "AppStore-CA", "rating": 1.0, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["price"], "note": "14-day trial too short; can't afford"}, {"id": 30, "source": "AppStore-CA", "rating": 1.0, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["privacy"], "note": "Full keyboard access unacceptable"}, {"id": 31, "source": "AppStore-IN", "rating": 5.0, "sentiment": "pos", "persona": "multilingual", "job": "messaging", "themes": ["accuracy"], "note": "Works with Indian accents"}, {"id": 32, "source": "AppStore-IN", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "notes", "themes": ["accuracy"], "note": "Picks up whispered voice"}, {"id": 33, "source": "AppStore-IN", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Trusts transcription without checking"}, {"id": 34, "source": "AppStore-IN", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Best of several tested"}, {"id": 35, "source": "AppStore-IN", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Fast speaker; like a stenographer"}, {"id": 36, "source": "AppStore-IN", "rating": 5.0, "sentiment": "pos", "persona": "multilingual", "job": "messaging", "themes": ["multilingual", "learning"], "note": "Wants bulk dictionary import and English (India)"}, {"id": 37, "source": "AppStore-IN", "rating": 5.0, "sentiment": "pos", "persona": "mobile_field", "job": "notes", "themes": ["multilingual"], "note": "Driving; thinking aloud; wants code-switching"}, {"id": 38, "source": "AppStore-IN", "rating": 4.0, "sentiment": "mixed", "persona": "general", "job": "messaging", "themes": ["privacy"], "note": "Useful but keyboard access concern"}, {"id": 39, "source": "AppStore-IN", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["speed"], "note": "2-3x productivity; zero typing"}, {"id": 40, "source": "AppStore-IN", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "notes", "themes": ["delight"], "note": "Mind expresses freely"}, {"id": 41, "source": "AppStore-AU", "rating": 5.0, "sentiment": "pos", "persona": "knowledge_worker", "job": "notes", "themes": ["speed"], "note": "Dispute resolution / dev / music; offloading thoughts"}, {"id": 42, "source": "AppStore-AU", "rating": 4.0, "sentiment": "mixed", "persona": "general", "job": "messaging", "themes": ["reliability"], "note": "Fails silently with AirPods"}, {"id": 43, "source": "AppStore-AU", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy", "reliability"], "note": "iPad Pro input bug"}, {"id": 44, "source": "AppStore-AU", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["cleanup"], "note": "Context and formatting aware"}, {"id": 45, "source": "AppStore-AU", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Better than Siri"}, {"id": 46, "source": "AppStore-AU", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "No word limits vs built-in"}, {"id": 47, "source": "AppStore-AU", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "ai_prompting", "themes": ["speed"], "note": "ChatGPT/Gemini prompting"}, {"id": 48, "source": "AppStore-AU", "rating": 5.0, "sentiment": "pos", "persona": "mobile_field", "job": "notes", "themes": ["accuracy"], "note": "Construction on-site notes"}, {"id": 49, "source": "AppStore-AU", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["speed"], "note": "5-6x more productive"}, {"id": 50, "source": "AppStore-AU", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["speed"], "note": "Speed and ease"}, {"id": 51, "source": "G2", "rating": 5.0, "sentiment": "pos", "persona": "founder_exec", "job": "ai_prompting", "themes": ["learning", "ui"], "note": "CPO; custom dictionary; panel blocks controls"}, {"id": 52, "source": "G2", "rating": 4.5, "sentiment": "pos", "persona": "student", "job": "docs", "themes": ["speed", "reliability"], "note": "54 to 106 WPM"}, {"id": 53, "source": "G2", "rating": 4.5, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["speed"], "note": "200 WPM"}, {"id": 54, "source": "G2", "rating": 4.5, "sentiment": "pos", "persona": "knowledge_worker", "job": "ai_prompting", "themes": ["multilingual", "ui"], "note": "E-learning; multi-language struggles"}, {"id": 55, "source": "G2", "rating": 3.5, "sentiment": "mixed", "persona": "knowledge_worker", "job": "ai_prompting", "themes": ["multilingual"], "note": "Consultant; Hinglish not working"}, {"id": 56, "source": "G2", "rating": 5.0, "sentiment": "pos", "persona": "knowledge_worker", "job": "ai_prompting", "themes": ["accuracy"], "note": "Marketing manager healthcare; ChatGPT prompts"}, {"id": 57, "source": "G2", "rating": 3.0, "sentiment": "mixed", "persona": "founder_exec", "job": "messaging", "themes": ["multilingual", "reliability"], "note": "Android breaks frequently"}, {"id": 58, "source": "G2", "rating": 5.0, "sentiment": "pos", "persona": "founder_exec", "job": "messaging", "themes": ["speed"], "note": "COO; emails"}, {"id": 59, "source": "G2", "rating": 5.0, "sentiment": "pos", "persona": "knowledge_worker", "job": "messaging", "themes": ["learning"], "note": "Associate; learns terminology"}, {"id": 60, "source": "G2", "rating": 5.0, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["speed"], "note": "Saves hours daily"}, {"id": 61, "source": "G2", "rating": 4.5, "sentiment": "pos", "persona": "knowledge_worker", "job": "messaging", "themes": ["price"], "note": "Software; expensive; shortcut conflicts"}, {"id": 62, "source": "G2", "rating": 5.0, "sentiment": "pos", "persona": "founder_exec", "job": "messaging", "themes": ["speed"], "note": "Business coach"}, {"id": 63, "source": "G2", "rating": 5.0, "sentiment": "pos", "persona": "knowledge_worker", "job": "ai_prompting", "themes": ["learning"], "note": "Director UX; context-aware"}, {"id": 64, "source": "G2", "rating": 5.0, "sentiment": "pos", "persona": "knowledge_worker", "job": "messaging", "themes": ["mobile_friction"], "note": "iPhone app switching"}, {"id": 65, "source": "G2", "rating": 5.0, "sentiment": "pos", "persona": "knowledge_worker", "job": "ai_prompting", "themes": ["mobile_friction"], "note": "Product manager; keyboard switching"}, {"id": 66, "source": "G2", "rating": 5.0, "sentiment": "pos", "persona": "knowledge_worker", "job": "messaging", "themes": ["cleanup"], "note": "Sales manager; client communication"}, {"id": 67, "source": "G2", "rating": 5.0, "sentiment": "pos", "persona": "founder_exec", "job": "docs", "themes": ["habit"], "note": "Director; forgets to use it regularly"}, {"id": 68, "source": "G2", "rating": 4.0, "sentiment": "pos", "persona": "founder_exec", "job": "ai_prompting", "themes": ["speed"], "note": "Founder; AI prompts"}, {"id": 69, "source": "G2", "rating": 5.0, "sentiment": "pos", "persona": "knowledge_worker", "job": "messaging", "themes": ["mobile_friction"], "note": "Marketing strategist; iPhone keyboard cumbersome"}, {"id": 70, "source": "G2", "rating": 4.5, "sentiment": "pos", "persona": "knowledge_worker", "job": "ai_prompting", "themes": ["price"], "note": "BD manager; subscription required"}, {"id": 71, "source": "G2", "rating": 4.5, "sentiment": "pos", "persona": "knowledge_worker", "job": "messaging", "themes": ["accuracy"], "note": "Team communication; sometimes misinterprets"}, {"id": 72, "source": "HN", "rating": null, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Interested in trying"}, {"id": 73, "source": "HN", "rating": null, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["price"], "note": "Generous free tier"}, {"id": 74, "source": "HN", "rating": null, "sentiment": "mixed", "persona": "general", "job": "messaging", "themes": ["hardware"], "note": "Wants whisper-mode mic"}, {"id": 75, "source": "HN", "rating": null, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Robust vs iOS/macOS"}, {"id": 76, "source": "HN", "rating": null, "sentiment": "neg", "persona": "developer", "job": "coding", "themes": ["alternative"], "note": "Built alternative after switching off"}, {"id": 77, "source": "HN", "rating": null, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["alternative"], "note": "Seeking alternative"}, {"id": 78, "source": "HN", "rating": null, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Paid user"}, {"id": 79, "source": "HN", "rating": null, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["context"], "note": "Lacks context awareness"}, {"id": 80, "source": "HN", "rating": null, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["alternative"], "note": "Switched to silent speech"}, {"id": 81, "source": "HN", "rating": null, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["defensibility"], "note": "Questions defensibility"}, {"id": 82, "source": "HN", "rating": null, "sentiment": "neg", "persona": "developer", "job": "coding", "themes": ["privacy", "price", "alternative"], "note": "Built local alternative"}, {"id": 83, "source": "HN", "rating": null, "sentiment": "neutral", "persona": "developer", "job": "coding", "themes": ["alternative"], "note": "Learning local models"}, {"id": 84, "source": "HN", "rating": null, "sentiment": "neg", "persona": "developer", "job": "coding", "themes": ["accuracy", "alternative"], "note": "Competitor; claims regression"}, {"id": 85, "source": "HN", "rating": null, "sentiment": "neg", "persona": "developer", "job": "coding", "themes": ["trust", "alternative"], "note": "User-hostile features; built replacement"}, {"id": 86, "source": "HN", "rating": null, "sentiment": "mixed", "persona": "developer", "job": "coding", "themes": ["accuracy"], "note": "Tried improvements"}, {"id": 87, "source": "HN", "rating": null, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["cleanup"], "note": "Um removal"}, {"id": 88, "source": "HN", "rating": null, "sentiment": "neg", "persona": "developer", "job": "coding", "themes": ["price", "alternative"], "note": "Built Floatspeak; stopped paying"}, {"id": 89, "source": "HN", "rating": null, "sentiment": "neg", "persona": "developer", "job": "coding", "themes": ["platform", "alternative"], "note": "No Linux; repackaged"}, {"id": 90, "source": "HN", "rating": null, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Uses daily"}, {"id": 91, "source": "HN", "rating": null, "sentiment": "pos", "persona": "developer", "job": "coding", "themes": ["accuracy"], "note": "Dictation in public reference"}, {"id": 92, "source": "HN", "rating": null, "sentiment": "neutral", "persona": "general", "job": "messaging", "themes": ["platform"], "note": "Distribution discussion"}, {"id": 93, "source": "HN", "rating": null, "sentiment": "neutral", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Technical question"}, {"id": 94, "source": "HN", "rating": null, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["privacy"], "note": "Cloud model concern"}, {"id": 95, "source": "HN", "rating": null, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["price"], "note": "$12/mo not worth it over iOS"}, {"id": 96, "source": "HN", "rating": null, "sentiment": "mixed", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "More accurate but more friction than Apple"}, {"id": 97, "source": "HN", "rating": null, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Dismissive"}, {"id": 98, "source": "HN", "rating": null, "sentiment": "mixed", "persona": "general", "job": "messaging", "themes": ["performance"], "note": "Heavier than Apple"}, {"id": 99, "source": "HN", "rating": null, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["performance", "alternative"], "note": "Switched to local Handy for latency"}, {"id": 100, "source": "HN", "rating": null, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Outperformed by ElevenLabs/OpenAI"}, {"id": 101, "source": "HN", "rating": null, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["cleanup"], "note": "Filler removal"}, {"id": 102, "source": "HN", "rating": null, "sentiment": "neutral", "persona": "developer", "job": "coding", "themes": ["alternative"], "note": "Built dictation app"}, {"id": 103, "source": "HN", "rating": null, "sentiment": "pos", "persona": "knowledge_worker", "job": "messaging", "themes": ["accuracy"], "note": "Common in open offices"}, {"id": 104, "source": "HN", "rating": null, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["design"], "note": "Landing page originality"}, {"id": 105, "source": "HN", "rating": null, "sentiment": "neutral", "persona": "developer", "job": "coding", "themes": ["alternative"], "note": "Flow + Granola alternative"}, {"id": 106, "source": "HN", "rating": null, "sentiment": "neutral", "persona": "general", "job": "messaging", "themes": ["accuracy"], "note": "Silence artifacts"}, {"id": 107, "source": "HN", "rating": null, "sentiment": "neg", "persona": "developer", "job": "coding", "themes": ["price", "alternative"], "note": "PAYG alternative to subscription"}, {"id": 108, "source": "HN", "rating": null, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["learning"], "note": "Replacement rules"}, {"id": 109, "source": "HN", "rating": null, "sentiment": "pos", "persona": "general", "job": "docs", "themes": ["cleanup"], "note": "List formatting"}, {"id": 110, "source": "HN", "rating": null, "sentiment": "pos", "persona": "accessibility", "job": "docs", "themes": ["accessibility"], "note": "PM unable to type during injury"}, {"id": 111, "source": "HN", "rating": null, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["alternative"], "note": "Fragmented OSS efforts"}, {"id": 112, "source": "HN", "rating": null, "sentiment": "pos", "persona": "developer", "job": "coding", "themes": ["alternative"], "note": "Local tool comparable"}, {"id": 113, "source": "HN", "rating": null, "sentiment": "pos", "persona": "general", "job": "messaging", "themes": ["alternative"], "note": "Satisfied with Handy"}, {"id": 114, "source": "HN", "rating": null, "sentiment": "neutral", "persona": "general", "job": "messaging", "themes": ["alternative"], "note": "Competitive positioning"}, {"id": 115, "source": "HN", "rating": null, "sentiment": "neg", "persona": "general", "job": "messaging", "themes": ["trust"], "note": "SOC2 vendor concern"}, {"id": 116, "source": "HN", "rating": null, "sentiment": "pos", "persona": "general", "job": "docs", "themes": ["accuracy"], "note": "Far superior to macOS"}, {"id": 117, "source": "HN", "rating": null, "sentiment": "pos", "persona": "developer", "job": "coding", "themes": ["speed"], "note": "Advocates STT for dev"}, {"id": 118, "source": "HN", "rating": null, "sentiment": "pos", "persona": "developer", "job": "ai_prompting", "themes": ["cleanup"], "note": "LLM post-processing"}, {"id": 119, "source": "HN", "rating": null, "sentiment": "neg", "persona": "developer", "job": "coding", "themes": ["price", "alternative"], "note": "Built free local alternative"}, {"id": 120, "source": "HN", "rating": null, "sentiment": "pos", "persona": "developer", "job": "coding", "themes": ["speed"], "note": "Faster than typing"}, {"id": 121, "source": "HN", "rating": null, "sentiment": "pos", "persona": "developer", "job": "coding", "themes": ["accuracy"], "note": "Daily user; others inadequate"}, {"id": 122, "source": "HN", "rating": null, "sentiment": "pos", "persona": "developer", "job": "ai_prompting", "themes": ["speed"], "note": "Primary interface for Claude"}, {"id": 123, "source": "HN", "rating": null, "sentiment": "pos", "persona": "developer", "job": "coding", "themes": ["accuracy"], "note": "OSS attempts inferior to Flow"}, {"id": 124, "source": "HN", "rating": null, "sentiment": "neg", "persona": "developer", "job": "coding", "themes": ["privacy", "price", "alternative"], "note": "Built on-device alternative"}];
+const $ = s => document.querySelector(s);
+// waveform
+(()=>{const w=$('#wave');const h=[8,14,22,30,18,26,34,20,12,24,32,16,10,28,20,12,6];h.forEach(v=>{const i=document.createElement('i');i.style.height=v+'px';w.appendChild(i)});})();
+
+const groups = [
+  ['Knowledge workers and execs', ['knowledge_worker','founder_exec'], true],
+  ['Accessibility, field, multilingual, student', ['accessibility','mobile_field','multilingual','student'], false],
+  ['General, role not stated', ['general'], false],
+  ['Developers', ['developer'], false],
+];
+const tip = document.createElement('div'); tip.className='tip'; tip.hidden=true; $('#c1').appendChild(tip);
+function showTip(e,text){const r=$('#c1').getBoundingClientRect();tip.textContent=text;tip.hidden=false;let x=e.clientX-r.left+12;const maxX=r.width-tip.offsetWidth-8;tip.style.left=Math.max(8,Math.min(x,maxX))+'px';tip.style.top=(e.clientY-r.top-34)+'px';}
+groups.forEach(([name,ps])=>{
+  const g=DATA.filter(d=>ps.includes(d.persona));
+  const pos=g.filter(d=>d.sentiment==='pos').length, neg=g.filter(d=>d.sentiment==='neg').length, mid=g.length-pos-neg;
+  const row=document.createElement('div');row.className='row';
+  row.innerHTML=`<div class="lab">${name}<small>n=${g.length}</small></div><div class="bar"></div>`;
+  const bar=row.querySelector('.bar');
+  [['Positive',pos,'var(--accent)'],['Mixed or neutral',mid,'var(--mid)'],['Negative',neg,'var(--neg)']].forEach(([l,v,c])=>{
+    if(!v) return; const s=document.createElement('div'); const pct=Math.round(v/g.length*100);
+    s.style.flex=v; s.style.background=c; if(pct>=12) s.textContent=pct+'%';
+    s.addEventListener('mousemove',e=>showTip(e,`${name}: ${l} ${v} of ${g.length} (${pct}%)`));
+    s.addEventListener('mouseleave',()=>tip.hidden=true);
+    bar.appendChild(s);
+  });
+  $('#c1rows').appendChild(row);
+});
+
+const negs=DATA.filter(d=>d.sentiment==='neg');
+const themeMap=[['Built or switched to an alternative',['alternative']],['Price or subscription',['price']],['Privacy or keyboard access',['privacy']],['Accuracy',['accuracy']],['Trust in the company',['trust']],['Everything else',['billing','mobile_friction','context','defensibility','platform','performance','design']]];
+const max=Math.max(...themeMap.map(([,k])=>negs.filter(d=>d.themes.some(t=>k.includes(t))).length));
+themeMap.forEach(([name,keys],i)=>{
+  const n=negs.filter(d=>d.themes.some(t=>keys.includes(t))).length;
+  const row=document.createElement('div');row.className='row';
+  row.innerHTML=`<div class="lab">${name}</div><div class="hbar"><div class="${i===3?'q':''}" style="width:${n/max*85}%" title="${name}: ${n} of 28"></div><span>${n}</span></div>`;
+  $('#c2rows').appendChild(row);
+});
+
+const segs=[['Knowledge workers (marketing, UX, sales, consulting, PM)',['knowledge_worker'],'Partly (sales)'],['Founders and execs',['founder_exec'],'Yes (leaders)'],['Developers',['developer'],'Yes'],['Accessibility',['accessibility'],'Resource page only'],['Field and mobile workers',['mobile_field'],'No'],['Students',['student'],'Yes']];
+segs.forEach(([n,ps,has])=>{const g=DATA.filter(d=>ps.includes(d.persona));const pos=g.filter(d=>d.sentiment==='pos').length,neg=g.filter(d=>d.sentiment==='neg').length;
+  const cls=has.startsWith('Yes')?'yes':(has==='No'?'no':'');
+  $('#t1').insertAdjacentHTML('beforeend',`<tr><td>${n}</td><td class="num">${g.length}</td><td class="num">${pos}</td><td class="num">${neg}</td><td><span class="pill ${cls}">${has}</span></td></tr>`);});
+const ai=DATA.filter(d=>d.job==='ai_prompting');
+$('#t1').insertAdjacentHTML('afterbegin',`<tr><td><b>Anyone dictating AI prompts</b></td><td class="num">${ai.length}</td><td class="num">${ai.filter(d=>d.sentiment==='pos').length}</td><td class="num">${ai.filter(d=>d.sentiment==='neg').length}</td><td><span class="pill no">No</span></td></tr>`);
+
+const exps=[
+ ['An "AI prompting" onboarding path','Asking new users where they write most, and walking AI-chat users through their first dictated prompt, raises activation for that group.','Week-1 activation and week-4 retention against the current onboarding.','Onboarding question, one guided flow.'],
+ ['Prompt-aware cleanup','Cleanup tuned for email trims detail that prompts need. Keeping detail when the active app is an AI chat reduces edits.','Edit rate and undo rate on dictations inside AI chat apps.','A per-app style rule, like the existing tone setting.'],
+ ['Privacy-first offer at developer trial end','Developers leave over price and cloud privacy, not quality. Leading with Privacy Mode and zero retention at trial end lifts conversion.','Trial-to-paid conversion for users whose top app is an IDE or terminal.','Messaging test only.'],
+ ['Measure the iOS app-switch drop-off','The app switch on iOS is where happy desktop users stop using Flow on mobile.','Share of iOS sessions abandoned at the switch step, and mobile weekly active rate.','Instrumentation first, then a fix.'],
+];
+exps.forEach(([t,h,m,b],i)=>$('#exps').insertAdjacentHTML('beforeend',`<div class="exp"><div class="n">E${i+1}</div><h3>${t}</h3><dl><dt>Hypothesis</dt><dd>${h}</dd><dt>Metric</dt><dd>${m}</dd><dt>Build</dt><dd>${b}</dd></dl></div>`));
+
+const lbl={pos:'Positive',neg:'Negative',mixed:'Mixed',neutral:'Neutral'};
+DATA.forEach(d=>$('#all').insertAdjacentHTML('beforeend',`<tr><td class="num">${d.id}</td><td>${d.source}</td><td class="num">${d.rating??''}</td><td>${lbl[d.sentiment]}</td><td>${d.persona.replace('_',' ')}</td><td>${d.job.replace('_',' ')}</td><td>${d.themes.join(', ').replace(/_/g,' ')}</td><td>${d.note}</td></tr>`));
+</script>
+
+</body>
+</html>

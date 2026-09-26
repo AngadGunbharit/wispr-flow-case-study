@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif;background:#fafaf9}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Flow Prompt Mode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F5F7F6; --surface:#FFFFFF; --sunk:#EBF0EE; --ink:#16201F; --ink2:#46524F; --muted:#6E7A77;
+  --rule:#DCE3E1; --accent:#00897B; --accent-ink:#FFFFFF; --soft:#E3F2EF; --mark:#FBE3B8; --markink:#5A3B05;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121817; --surface:#1A2120; --sunk:#172020; --ink:#E6ECEA; --ink2:#B4C0BD; --muted:#8A9794;
+    --rule:#2C3634; --accent:#0FA898; --accent-ink:#0B1413; --soft:#16302C; --mark:#5A4418; --markink:#FBE3B8; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121817; --surface:#1A2120; --sunk:#172020; --ink:#E6ECEA; --ink2:#B4C0BD; --muted:#8A9794;
+  --rule:#2C3634; --accent:#0FA898; --accent-ink:#0B1413; --soft:#16302C; --mark:#5A4418; --markink:#FBE3B8; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-inline:20px;padding-block:0}
+.wrap{max-width:760px;margin:0 auto;padding-block:56px 80px;display:flex;flex-direction:column;gap:48px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,6vw,3.6rem)}
+h2{font-size:1.65rem}
+h3{font-size:1.05rem}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+header{display:flex;flex-direction:column;gap:18px}
+.lede{font-size:1.2rem;color:var(--ink2)}
+.wave{display:flex;align-items:center;gap:3px;height:36px}
+.wave i{display:block;width:4px;border-radius:2px;background:var(--accent);opacity:.85}
+
+.controls{display:flex;flex-direction:column;gap:12px;padding-block:18px;border-block:1px solid var(--rule)}
+.ctl{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.ctl .lab{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);width:118px;white-space:nowrap}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--display);font-weight:500;font-size:.88rem;border:1px solid var(--rule);background:transparent;color:var(--ink2);border-radius:999px;padding:5px 13px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:focus-visible,.btn:focus-visible,textarea:focus-visible,a:focus-visible,.linkbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.detect{font-family:var(--mono);font-size:.76rem;color:var(--ink2);display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none}
+.detect.on .dot{background:var(--accent);box-shadow:0 0 0 4px var(--soft)}
+
+/* the flow */
+.flow{display:flex;flex-direction:column;position:relative}
+.stage{display:grid;grid-template-columns:28px 1fr;gap:0 18px;position:relative}
+.stage .rail{position:relative;display:flex;justify-content:center}
+.stage .rail::before{content:"";position:absolute;top:0;bottom:0;width:2px;background:var(--rule)}
+.stage:first-child .rail::before{top:10px}
+.stage:last-child .rail::before{bottom:auto;height:10px}
+.stage .node{position:relative;margin-top:4px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--muted)}
+.stage.pm .node{border-color:var(--accent);background:var(--accent)}
+.stage .body{padding-bottom:36px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.stage:last-child .body{padding-bottom:0}
+.shead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.shead h3{font-size:1.05rem}
+.meta{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.said{font-size:1.02rem;color:var(--ink2);font-style:italic;overflow-wrap:anywhere}
+mark{background:var(--mark);color:var(--markink);font-style:normal;border-radius:3px;padding:0 3px}
+.legendline{font-family:var(--mono);font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:8px}
+.legendline mark{font-family:var(--mono);font-size:.7rem}
+.msg{font-size:1.02rem;color:var(--ink2);overflow-wrap:anywhere}
+.lost{font-family:var(--mono);font-size:.76rem;color:var(--ink2)}
+.lost b{color:var(--ink);font-weight:500}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.stage.pm .card{border-color:var(--accent);box-shadow:0 1px 0 var(--rule),0 12px 30px -18px rgba(0,80,70,.35)}
+.prompt{padding:20px 22px;display:flex;flex-direction:column;gap:14px;overflow-wrap:anywhere}
+.prompt .sec{display:flex;flex-direction:column;gap:4px}
+.prompt .sec .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.prompt ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:2px}
+.prompt p{font-size:1rem}
+.bar{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:12px 22px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:.76rem;color:var(--ink2);background:var(--sunk)}
+.bar a,.linkbtn{color:var(--accent)}
+.linkbtn{background:none;border:none;padding:0;font:inherit;cursor:pointer;text-decoration:underline}
+.off{padding:20px 22px;color:var(--muted);font-style:italic}
+
+.figs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.fig{background:var(--surface);padding:18px;display:flex;flex-direction:column;gap:6px}
+.fig b{font-family:var(--display);font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
+.fig b.pos{color:var(--accent)}
+.fig span{font-size:.9rem;color:var(--ink2);line-height:1.4}
+@media (max-width:600px){.figs{grid-template-columns:1fr}}
+
+section{display:flex;flex-direction:column;gap:16px}
+textarea{width:100%;min-height:130px;resize:vertical;font-family:var(--body);font-size:1rem;line-height:1.55;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px}
+kbd{font-family:var(--mono);font-size:.75rem;border:1px solid var(--rule);border-bottom-width:2px;border-radius:4px;padding:1px 6px;background:var(--surface);color:var(--ink2)}
+.hint{font-size:.92rem;color:var(--ink2)}
+.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{font-family:var(--display);font-weight:500;font-size:.95rem;border-radius:8px;padding:10px 18px;cursor:pointer;border:1px solid var(--rule);background:var(--surface);color:var(--ink)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:default}
+.status{font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.why{display:flex;flex-direction:column;gap:18px}
+.why div{display:grid;grid-template-columns:minmax(0,220px) 1fr;gap:6px 24px;padding-top:16px;border-top:1px solid var(--rule)}
+.why p{color:var(--ink2)}
+@media (max-width:600px){.why div{grid-template-columns:1fr}.ctl .lab{width:auto}}
+.note{font-size:.86rem;color:var(--muted);font-style:italic}
+footer{font-family:var(--mono);font-size:.74rem;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="wave" aria-hidden="true" id="wave"></div>
+  <div class="eyebrow">Prototype · Wispr Flow · Experiments E1 + E2</div>
+  <h1>Flow Prompt Mode</h1>
+  <p class="lede">When you dictate into an AI chat, Flow should clean up your speech into a prompt, not a message. A message can lose an aside. A prompt can't afford to lose a single constraint.</p>
+</header>
+
+<div class="controls">
+  <div class="ctl"><span class="lab">Dictating into</span><div class="seg" id="apps" role="group" aria-label="Destination app"></div></div>
+  <div class="ctl"><span class="lab">Example</span><div class="seg" id="samples" role="group" aria-label="Example ramble"></div></div>
+  <div class="detect" id="detect"><span class="dot"></span><span id="detectText"></span></div>
+</div>
+
+<div class="flow" aria-live="polite">
+  <div class="stage">
+    <div class="rail"><span class="node"></span></div>
+    <div class="body">
+      <div class="shead"><h3>What you said</h3><span class="meta" id="rawWords"></span></div>
+      <p class="said" id="said"></p>
+      <div class="legendline"><mark>highlighted</mark> details a short cleanup drops</div>
+    </div>
+  </div>
+  <div class="stage">
+    <div class="rail"><span class="node"></span></div>
+    <div class="body">
+      <div class="shead"><h3>Message cleanup</h3><span class="meta" id="stdWords"></span></div>
+      <p class="msg" id="std"></p>
+      <div class="lost" id="lost"></div>
+    </div>
+  </div>
+  <div class="stage pm">
+    <div class="rail"><span class="node"></span></div>
+    <div class="body">
+      <div class="shead"><h3>Prompt Mode</h3><span class="meta" id="pmWords"></span></div>
+      <div class="card">
+        <div class="prompt" id="pm"></div>
+        <div class="off" id="pmOff" hidden></div>
+        <div class="bar" id="pmBar"><button class="linkbtn" id="copy" type="button">Copy prompt</button><a id="openGpt" href="#" target="_blank" rel="noopener">Open in ChatGPT</a><a id="openClaude" href="#" target="_blank" rel="noopener">Open in Claude</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="figs">
+  <div class="fig"><b class="pos" id="fKept">0</b><span>details kept that the short cleanup lost</span></div>
+  <div class="fig"><b id="fStd">0</b><span>words in the message cleanup</span></div>
+  <div class="fig"><b id="fPm">0</b><span>words in the prompt, still easy to scan</span></div>
+</div>
+
+<section>
+  <div class="eyebrow">Try your own</div>
+  <h2>Ramble, then clean it up</h2>
+  <p class="hint">Click in the box, hold your Flow key <kbd>fn</kbd> and talk through something you'd ask an AI. Typing works too.</p>
+  <label for="raw" class="eyebrow" style="position:absolute;left:-9999px">Your dictation</label>
+  <textarea id="raw" spellcheck="false" placeholder="so um I need help with..."></textarea>
+  <div class="actions">
+    <button class="btn primary" id="go" type="button">Clean it up</button>
+    <button class="btn" id="stop" type="button" hidden>Stop</button>
+    <span class="status" id="status"></span>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Why this matters</div>
+  <div class="why">
+    <div><h3>It's the happiest segment's main job</h3><p>In my scan of 124 public reviews, 11 of 12 people who dictate AI prompts were positive and none were negative. No Wispr page speaks to them.</p></div>
+    <div><h3>Longer prompts get better answers</h3><p>Speaking makes a detailed prompt cheap. Cleanup that trims it gives back the time voice just saved.</p></div>
+    <div><h3>It's the first step to voice-to-action</h3><p>A prompt is already an instruction. Flow structuring it, then sending it to the right tool, is how dictation becomes action.</p></div>
+  </div>
+  <p class="note">What I'd measure: edit and undo rates on dictations in AI apps with Prompt Mode on vs. off, and week-4 retention for users whose top app is an AI chat. The message cleanup shown here is a simulation for comparison, not Wispr's model.</p>
+</section>
+
+<footer><span>Built by Angad Gunbharit</span><a href="icp-scan.html" style="color:var(--accent)">Read the ICP scan</a><a href="index.html" style="color:var(--accent)">Case study home</a></footer>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+(()=>{const w=$('#wave');[8,14,22,30,18,26,34,20,12,24,32,16,10,28,20,12,6].forEach(v=>{const i=document.createElement('i');i.style.height=v+'px';w.appendChild(i)})})();
+const APPS=[{id:'chatgpt',name:'ChatGPT',ai:true},{id:'claude',name:'Claude',ai:true},{id:'cursor',name:'Cursor',ai:true},{id:'gmail',name:'Gmail',ai:false},{id:'slack',name:'Slack',ai:false}];
+const SAMPLES=[
+ {id:'pricing',label:'Pricing test',raw:"okay so um I need help planning, like, a pricing test for our app, it's a B2B scheduling tool for dental clinics, we have three tiers right now but honestly the middle one nobody buys, uh, we're at like 400 clinics, most on the cheapest plan, and I want to test raising the entry price from 49 to 69 a month without losing people, oh and we can't do annual discounts because finance hates it, so give me, I don't know, maybe three options with the reasoning and what I'd measure, keep it short-ish, like a table maybe",
+  std:"I need help planning a pricing test for our B2B scheduling tool for dental clinics. We have three tiers, but the middle one isn't selling. Can you suggest a few options for raising our entry price?",
+  pm:"Goal\nPlan a pricing test that raises our entry price without losing customers.\n\nContext\n- Product: B2B scheduling tool for dental clinics\n- About 400 clinics today, most on the cheapest plan\n- Three tiers; almost nobody buys the middle tier\n\nWhat I want to test\n- Raising the entry plan from $49 to $69 a month\n\nConstraints\n- No annual discounts (finance won't approve them)\n\nOutput\n- Three options, each with the reasoning and the metrics I'd track\n- Keep it short; a table works",
+  spans:["400 clinics, most on the cheapest plan","from 49 to 69 a month","we can't do annual discounts","maybe three options","the reasoning and what I'd measure","keep it short-ish, like a table maybe"]},
+ {id:'bug',label:'React bug',raw:"so there's this bug where uh, our React form resets whenever the user switches tabs, it's a multi-step checkout, we store state in useState in the parent, and I think it's remounting because the tab component uses a key based on the index? not sure. We're on React 18 with Next 14. I don't want to add Redux. Can you tell me what's likely happening and the smallest fix, and show code",
+  std:"Our React checkout form resets when users switch tabs. I think the tab component might be causing a remount. What's the fix?",
+  pm:"Goal\nFind why our multi-step checkout form resets when the user switches tabs, and the smallest fix.\n\nContext\n- React 18, Next.js 14\n- Form state lives in useState in the parent component\n- Suspected cause: the tab component uses an index-based key, which may remount the form (not confirmed)\n\nConstraints\n- Don't add Redux or another state library\n\nOutput\n- The likely cause, explained briefly\n- The smallest fix, with code",
+  spans:["we store state in useState in the parent","a key based on the index","React 18 with Next 14","I don't want to add Redux","the smallest fix","show code"]},
+ {id:'trip',label:'Lisbon trip',raw:"help me plan like a three day trip to Lisbon in November, it's me and my partner, she's vegetarian, we don't want to rent a car, um we like food markets and walking but not super touristy stuff, budget's maybe 250 euros a day for both excluding the hotel, and we land Thursday around noon so day one is half a day",
+  std:"Can you help me plan a three-day trip to Lisbon in November for me and my partner? We like food markets and walking.",
+  pm:"Goal\nPlan a three-day Lisbon itinerary for two in November.\n\nTravelers\n- Me and my partner; she's vegetarian\n\nPreferences\n- Food markets and walking\n- Avoid the most touristy spots\n\nConstraints\n- No car\n- About €250 a day for both of us, not counting the hotel\n- We land Thursday around noon, so day one is a half day\n\nOutput\n- A day-by-day plan with vegetarian-friendly food stops",
+  spans:["she's vegetarian","we don't want to rent a car","not super touristy stuff","250 euros a day for both excluding the hotel","we land Thursday around noon","day one is half a day"]}
+];
+let app='chatgpt', sampleId='pricing', sample=null, ctl=null;
+let cur={raw:SAMPLES[0].raw,std:SAMPLES[0].std,pm:SAMPLES[0].pm,spans:SAMPLES[0].spans};
+
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const words=t=>(t.trim().match(/\S+/g)||[]).length;
+const isAI=()=>APPS.find(a=>a.id===app).ai;
+
+function chips(box,items,sel,onPick){box.innerHTML='';items.forEach(it=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=it.name||it.label;b.setAttribute('aria-pressed',it.id===sel);b.onclick=()=>onPick(it);box.appendChild(b)})}
+function renderControls(){
+  chips($('#apps'),APPS,app,a=>{app=a.id;renderControls();render()});
+  chips($('#samples'),SAMPLES,sampleId,s=>{sampleId=s.id;cur={raw:s.raw,std:s.std,pm:s.pm,spans:s.spans};renderControls();render();$('#status').textContent=''});
+}
+function highlight(raw,spans){
+  let ranges=[];spans.forEach(sp=>{if(!sp)return;const i=raw.toLowerCase().indexOf(String(sp).toLowerCase());if(i>=0)ranges.push([i,i+sp.length])});
+  ranges.sort((a,b)=>a[0]-b[0]);let out='',pos=0;
+  ranges.forEach(([s,e])=>{if(s<pos)return;out+=esc(raw.slice(pos,s))+'<mark>'+esc(raw.slice(s,e))+'</mark>';pos=e});
+  return {html:out+esc(raw.slice(pos)),n:ranges.filter((r,i,a)=>i===0||r[0]>=a[i-1][1]).length};
+}
+function renderPrompt(text){
+  const blocks=text.trim().split(/\n\s*\n/);let html='';
+  blocks.forEach(b=>{const lines=b.split('\n').map(l=>l.trim()).filter(Boolean);if(!lines.length)return;
+    let head='',rest=lines;if(!/^[-•]/.test(lines[0])&&lines.length>1){head=lines[0];rest=lines.slice(1)}
+    else if(!/^[-•]/.test(lines[0])&&lines.length===1&&lines[0].length<30){head=lines[0];rest=[]}
+    const bullets=rest.filter(l=>/^[-•]/.test(l)),plain=rest.filter(l=>!/^[-•]/.test(l));
+    html+='<div class="sec">'+(head?`<div class="k">${esc(head)}</div>`:'')+plain.map(p=>`<p>${esc(p)}</p>`).join('')+(bullets.length?'<ul>'+bullets.map(l=>`<li>${esc(l.replace(/^[-•]\s*/,''))}</li>`).join('')+'</ul>':'')+'</div>'});
+  return html;
+}
+function render(){
+  const ai=isAI(),name=APPS.find(a=>a.id===app).name;
+  $('#detect').classList.toggle('on',ai);
+  $('#detectText').textContent=ai?`Flow detects ${name}, an AI app. Prompt Mode is on.`:`Flow detects ${name}. A tidy message is right here, so Prompt Mode stays off.`;
+  const h=highlight(cur.raw,cur.spans);
+  $('#said').innerHTML=h.html;$('#rawWords').textContent=words(cur.raw)+' words, as spoken';
+  $('#std').textContent=cur.std;$('#stdWords').textContent=words(cur.std)+' words';
+  $('#lost').innerHTML=ai?`<b>${h.n} of the highlighted details</b> are missing from this version.`:`Good fit for ${esc(name)}. Short and ready to send.`;
+  $('#pm').hidden=!ai;$('#pmBar').hidden=!ai;$('#pmOff').hidden=ai;
+  $('#pmOff').textContent=`Off in ${name}. Prompt Mode only turns on when Flow sees an AI app, so everyday messages stay short.`;
+  $('#pm').innerHTML=renderPrompt(cur.pm);$('#pmWords').textContent=ai?words(cur.pm)+' words':'';
+  const q=encodeURIComponent(cur.pm);$('#openGpt').href='https://chatgpt.com/?q='+q;$('#openClaude').href='https://claude.ai/new?q='+q;
+  $('#fKept').textContent=h.n;$('#fStd').textContent=words(cur.std);$('#fPm').textContent=words(cur.pm);
+}
+$('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(cur.pm);$('#copy').textContent='Copied'}catch{const r=document.createRange();r.selectNodeContents($('#pm'));const s=getSelection();s.removeAllRanges();s.addRange(r);$('#copy').textContent='Selected, press Ctrl+C'}setTimeout(()=>$('#copy').textContent='Copy prompt',2000)};
+
+$('#go').onclick=async()=>{
+  const raw=$('#raw').value.trim();if(!raw){$('#status').textContent='Say or type something first.';return}
+  if(!sample){$('#status').textContent='Live cleanup is switched off in this public version. The three examples above show the idea, and a live demo is available on request.';return}
+  ctl=new AbortController();$('#go').disabled=true;$('#stop').hidden=false;$('#status').textContent='Thinking...';
+  const appName=APPS.find(a=>a.id===app).name;
+  const prompt=`You are simulating two cleanup styles for a voice dictation app. The user dictated the raw speech below into ${appName}.
+
+Return ONLY a JSON object: {"standard": string, "prompt": string, "spans": string[]}
+
+"standard": clean the speech the way a message-oriented dictation cleaner would for an email or chat: remove filler words, fix grammar, make it concise and polished. It condenses, so asides, numbers and constraints often get trimmed. 1 to 3 sentences.
+
+"prompt": clean the same speech into a well-structured prompt for an AI assistant. Remove filler but keep EVERY concrete detail, number, constraint and output preference the speaker said. Do not add facts they did not say. Plain text: short sections, each starting with a one-to-three-word heading line (for example Goal, Context, Constraints, Output) followed by "- " bullet lines, with a blank line between sections. No markdown symbols like # or **.
+
+"spans": 3 to 8 EXACT substrings copied character-for-character from the raw speech, each naming a specific detail that is kept in "prompt" but missing from "standard". Keep each under 12 words.
+
+Raw speech:
+"""${raw.slice(0,4000)}"""`;
+  try{
+    const r=await sample.json(prompt,{signal:ctl.signal,modelTier:'quick'});
+    if(!r||typeof r.standard!=='string'||typeof r.prompt!=='string')throw{code:'invalid_json'};
+    cur={raw,std:r.standard,pm:r.prompt,spans:Array.isArray(r.spans)?r.spans.map(String).slice(0,8):[]};
+    sampleId=null;renderControls();render();$('#status').textContent='Done. Scroll up to see your result.';
+    document.querySelector('.flow').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  }catch(e){
+    const c=e&&e.code;
+    $('#status').textContent={cancelled:'Stopped.',not_granted:'Live cleanup needs your permission to use Claude. The examples still work.',rate_limited:'Too many requests right now. Try again in a minute.',session_expired:'Sign in to Claude again to run this live.',invalid_json:'That result came back malformed. Try again.',refused:'Claude declined this text. Try different wording.'}[c]||'Something went wrong. Try again.';
+    if(['not_granted','sampling_disabled','capability_disabled','not_declared'].includes(c))sample=null;
+  }finally{$('#go').disabled=false;$('#stop').hidden=true}
+};
+$('#stop').onclick=()=>ctl&&ctl.abort();
+renderControls();render();
+(async()=>{try{sample=window.claude?await window.claude.use('sample'):null}catch{sample=null}})();
+</script>
+
+</body>
+</html>
